@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctor Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 th:text="${#strings.isEmpty(doctor.id) ? 'Add New Doctor' : 'Edit Doctor'}"></h1>
+        <form th:action="@{/admin/doctors/save}" method="post">
+            <input type="hidden" th:value="${doctor.id}" name="id" />
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" th:value="${doctor.firstName}" required>
+            <br>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" th:value="${doctor.lastName}" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" th:value="${doctor.email}" required>
+            <br>
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact" th:value="${doctor.contact}" required>
+            <br>
+            <label for="specialization">Specialization:</label>
+            <input type="text" id="specialization" name="specialization" th:value="${doctor.specialization}">
+            <br>
+            <label for="availability">Availability:</label>
+            <input type="text" id="availability" name="availability" th:value="${doctor.availability}">
+            <br>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" th:value="${doctor.username}" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" th:value="${doctor.password}" required>
+            <br>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

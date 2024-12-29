@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Bill</title>
+    <link rel="stylesheet" th:href="@{/css/styl.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Bill</h1>
+        
+        <!-- Go Back Button -->
+        <button onclick="history.back()" class="btn back-btn">Go Back</button><br><br>
+        
+        <form th:action="@{/admin/bills/edit/{id}(id=${bill.id})}" method="post">
+            <p><strong>Bill ID:</strong> <span th:text="${bill.id}"></span></p>
+            <p><strong>Patient Name:</strong> <span th:text="${bill.patient.firstName + ' ' + bill.patient.lastName}"></span></p>
+            <p><strong>Amount:</strong> <span th:text="${bill.amount}"></span></p>
+            <p><strong>Description:</strong> <span th:text="${bill.description}"></span></p>
+            <br>
+            
+            <label for="status">Payment Status:</label>
+            <select id="status" name="status" required>
+                <option th:value="PAID" th:selected="${bill.status == 'PAID'}">PAID</option>
+                <option th:value="UNPAID" th:selected="${bill.status == 'UNPAID'}">UNPAID</option>
+            </select>
+            <br><br>
+            
+            <button type="submit" class="btn">Update</button>
+        </form>
+    </div>
+</body>
+</html>

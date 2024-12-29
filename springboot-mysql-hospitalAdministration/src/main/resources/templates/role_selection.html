@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hospital Management System - Role Selection</title>
+</head>
+<body>
+    <h1>Welcome to Hospital Management System</h1>
+    <form action="/role/redirect" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="role">Select Role:</label>
+        <select id="role" name="role" required>
+            <option value="ADMIN">Admin</option>
+            <option value="DOCTOR">Doctor</option>
+            <option value="PATIENT">Patient</option>
+        </select><br><br>
+
+        <button type="submit">Continue</button>
+    </form>
+</body>
+</html>

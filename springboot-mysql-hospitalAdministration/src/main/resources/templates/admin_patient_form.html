@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Patient Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Patient</h2>
+        <form th:action="@{/admin/patients/add}" method="post">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contact" required>
+            </div>
+            <div class="form-group">
+                <label for="medicalHistory">Medical History:</label>
+                <textarea id="medicalHistory" name="medicalHistory"></textarea>
+            </div>
+            <button type="submit" class="btn">Save Patient</button>
+        </form>
+
+        <!-- Go Back Button -->
+        <button onclick="history.back()" class="btn back-btn">Go Back</button>
+    </div>
+</body>
+</html>

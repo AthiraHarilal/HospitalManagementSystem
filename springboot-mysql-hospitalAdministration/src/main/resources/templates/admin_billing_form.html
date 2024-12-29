@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Generate/Edit Bill</title>
+    <link rel="stylesheet" th:href="@{/css/styl.css}">
+</head>
+<body>
+    <div class="form-container">
+        <h1 th:text="${#strings.isEmpty(bill.id) ? 'Generate Bill' : 'Edit Bill'}"></h1>
+        
+        <!-- Go Back Button -->
+        <button onclick="history.back()" class="btn back-btn">Go Back</button><br><br>
+        
+        <form th:action="@{/admin/bills/save}" method="post">
+            <input type="hidden" th:value="${bill.id}" name="id" />
+            
+            <label for="patientName">Patient Name:</label>
+            <input type="text" id="patientName" name="patientName" th:value="${bill.patientName}" required>
+            <br><br>
+            
+            <label for="doctorName">Doctor Name:</label>
+            <input type="text" id="doctorName" name="doctorName" th:value="${bill.doctorName}" required>
+            <br><br>
+            
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" th:value="${bill.amount}" required>
+            <br><br>
+            
+            <label for="status">Status:</label>
+            <select id="status" name="status" th:field="*{status}">
+                <option value="PAID">PAID</option>
+                <option value="UNPAID">UNPAID</option>
+            </select>
+            <br><br>
+            
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" th:text="${bill.description}"></textarea>
+            <br><br>
+            
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

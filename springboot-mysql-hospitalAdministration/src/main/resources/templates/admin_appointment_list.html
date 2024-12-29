@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Appointments</title>
+    <link rel="stylesheet" th:href="@{/css/styl.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Book Appointments</h1>
+        <a th:href="@{/admin/appointments/add}" class="btn">Book New Appointment</a><br><br>
+        
+        <!-- Go Back Button -->
+        <button onclick="history.back()" class="btn back-btn">Go Back</button><br><br>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Appointment Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="appointment : ${appointments}">
+                    <td th:text="${appointment.patient.firstName + ' ' + appointment.patient.lastName}"></td>
+                    <td th:text="${appointment.doctor.firstName + ' ' + appointment.doctor.lastName}"></td>
+                    <td th:text="${appointment.appointmentDate}"></td>
+                    <td th:text="${appointment.status}"></td>
+                    <td>
+                        <a th:href="@{/admin/appointments/cancel/{id}(id=${appointment.id})}">Cancel</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
